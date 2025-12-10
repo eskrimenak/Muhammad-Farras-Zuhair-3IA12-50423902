@@ -1,175 +1,60 @@
-# Muhammad-Farras-Zuhair-3IA12-50423902
-Sistem Penyimpanan Data Obat 📊💊
+# Manajemen Data Obat Berbasis Web
 
-Aplikasi web untuk mengelola data obat secara efisien dengan penyimpanan lokal menggunakan localStorage. Dibangun dengan HTML, CSS, dan JavaScript murni.
+Aplikasi ini merupakan sistem pengelolaan data obat berbasis web yang dikembangkan menggunakan HTML, CSS, dan JavaScript. Aplikasi berfungsi untuk menyimpan, mengubah, menampilkan, dan menghapus data obat tanpa memerlukan basis data eksternal. Penyimpanan data dilakukan melalui LocalStorage sehingga aplikasi dapat digunakan tanpa koneksi internet.
 
+---
 
+## 1. Fitur Aplikasi
 
-✨ Fitur Utama
-CRUD Lengkap: Tambah, baca, ubah, dan hapus data obat
+Aplikasi ini memiliki beberapa fitur utama sebagai berikut:
 
-Penyimpanan Lokal: Data tersimpan di browser pengguna (localStorage)
+1. Penambahan data obat baru.
+2. Pengubahan (edit) data obat yang sudah tersimpan.
+3. Penghapusan data obat, baik secara individu maupun keseluruhan.
+4. Pencarian data obat berdasarkan nama.
+5. Penyimpanan otomatis menggunakan LocalStorage.
+6. Penyajian informasi statistik terkait:
+   - Total jenis obat.
+   - Total keseluruhan stok obat.
+   - Jumlah obat yang mendekati tanggal kedaluwarsa.
 
-Pencarian Real-time: Cari obat berdasarkan nama, kategori, atau deskripsi
+---
 
-Statistik Dashboard: Tampilkan jumlah obat, total stok, dan obat mendekati kadaluarsa
+## 2. Struktur Direktori
+📁 project-obat
+📄 index.html
+📄 script.js
+📄 style.css
 
-Validasi Form: Validasi input dengan tanggal minimum dan field required
 
-Responsif: Tampilan optimal untuk desktop, tablet, dan mobile
+---
 
-Notifikasi Interaktif: Feedback visual untuk setiap aksi
+## 3. Teknologi yang Digunakan
 
-🚀 Demo
-Jalankan aplikasi langsung dengan membuka file index.html di browser modern.
+| Teknologi | Fungsi |
+|----------|--------|
+| HTML5 | Membentuk struktur antarmuka aplikasi |
+| CSS3 | Mengatur tampilan dan estetika aplikasi |
+| JavaScript | Mengelola logika aplikasi, proses CRUD, serta LocalStorage |
+| Font Awesome | Menyediakan ikon tampilan aplikasi |
 
+---
 
-📋 Struktur Proyek
-text
-obat-management/
-│
-├── index.html          # File HTML utama
-├── style.css           # Stylesheet untuk tata letak
-├── script.js           # Logika JavaScript
-└── README.md           # Dokumentasi ini
+## 4. Cara Menjalankan Aplikasi
 
+1. Unduh atau salin seluruh file proyek.
+2. Pastikan struktur folder sesuai dengan struktur yang telah diberikan.
+3. Buka file *index.html* menggunakan browser seperti Google Chrome, Mozilla Firefox, atau Microsoft Edge.
+4. Aplikasi dapat langsung digunakan tanpa instalasi tambahan.
 
-🛠️ Teknologi yang Digunakan
-HTML5: Struktur halaman web
+---
 
-CSS3: Styling dan layout responsif
+## 5. Pengembangan Lebih Lanjut
 
-JavaScript ES6+: Logika aplikasi dan manipulasi DOM
+Aplikasi ini dapat dikembangkan lebih lanjut dengan menambahkan fitur berikut:
 
-FontAwesome 6.4.0: Ikon untuk UI
-
-localStorage: Penyimpanan data di browser
-
-CSS Grid & Flexbox: Layout modern
-
-📝 Data Obat yang Disimpan
-Setiap obat memiliki atribut berikut:
-
-Nama Obat (wajib)
-
-Kategori (Analgesik, Antibiotik, Vitamin, dll)
-
-Jumlah Stok (angka)
-
-Harga (Rupiah)
-
-Tanggal Kedaluwarsa (date picker)
-
-Deskripsi/Penggunaan (opsional)
-
-🔧 Cara Penggunaan
-1. Menambah Obat Baru
-Isi form di bagian "Masukkan/Ubah Data Obat"
-
-Klik tombol Simpan Data
-
-Obat akan muncul di tabel daftar
-
-2. Mengedit Obat
-Klik tombol Ubah pada baris obat yang ingin diedit
-
-Form akan terisi dengan data yang ada
-
-Ubah data sesuai kebutuhan
-
-Klik Update Data untuk menyimpan perubahan
-
-3. Menghapus Obat
-Klik tombol Hapus pada baris obat yang ingin dihapus
-
-Konfirmasi penghapusan di modal yang muncul
-
-4. Mencari Obat
-Gunakan kotak pencarian di atas tabel
-
-Ketik nama, kategori, atau deskripsi obat
-
-Hasil akan langsung tersaring
-
-5. Statistik
-Jumlah Obat: Total jenis obat yang tersimpan
-
-Total Stok: Jumlah keseluruhan stok semua obat
-
-Mendekati Kadaluarsa: Obat yang kadaluarsa dalam ≤30 hari
-
-⚡ Fitur Keamanan & Validasi
-Validasi Input: Semua field wajib diisi (kecuali deskripsi)
-
-Tanggal Minimum: Tidak bisa memilih tanggal sebelum hari ini
-
-Konfirmasi: Konfirmasi untuk aksi hapus
-
-Stok Rendah: Peringatan visual untuk stok <10
-
-Kadaluarsa Mendekati: Highlight untuk obat yang hampir kadaluarsa
-
-🎨 Tampilan Visual
-Warna Utama
-Primary: #4CAF50 (Hijau - aksi utama)
-
-Secondary: #2196F3 (Biru - edit)
-
-Danger: #f44336 (Merah - hapus)
-
-Warning: #ff9800 (Oranye - peringatan)
-
-Status Visual
-✅ Hijau: Aksi berhasil
-
-⚠️ Kuning: Peringatan kadaluarsa
-
-🔴 Merah: Stok sedikit (<10)
-
-🔵 Biru: Data dalam mode edit
-
-📱 Responsivitas
-Aplikasi mendukung berbagai ukuran layar:
-
-Desktop (>992px): Layout dua kolom
-
-Tablet (768px-992px): Layout adaptif
-
-Mobile (<768px): Satu kolom, form stacked
-
-💾 Penyimpanan Data
-Data disimpan secara lokal di browser pengguna menggunakan localStorage:
-
-Key: dataObat
-
-Format: JSON string
-
-Persistence: Data tetap ada setelah browser ditutup
-
-🐛 Troubleshooting
-Masalah Umum:
-Data tidak tersimpan: Pastikan browser mendukung localStorage
-
-Form tidak valid: Cek semua field wajib sudah diisi
-
-Tanggal invalid: Gunakan date picker yang disediakan
-
-Solusi:
-Clear browser cache jika ada masalah
-
-Gunakan browser versi terbaru
-
-Pastikan JavaScript diaktifkan
-
-🔮 Rencana Pengembangan
-Fitur yang direncanakan:
-
-Ekspor data ke CSV/Excel
-
-Backup & restore data
-
-Notifikasi browser untuk kadaluwarsa
-
-Multi-user dengan autentikasi
-
-Dashboard grafik statistik
+1. Ekspor laporan dalam bentuk PDF.
+2. Penyajian grafik stok obat.
+3. Integrasi dengan penyimpanan cloud (misalnya Firebase).
+4. Pengembangan menjadi aplikasi mobile berbasis Progressive Web App (PWA).
+5. Penambahan autentikasi pengguna (login admin).
