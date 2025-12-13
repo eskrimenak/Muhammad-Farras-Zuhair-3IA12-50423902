@@ -1,6 +1,7 @@
 let dataObat = JSON.parse(localStorage.getItem('dataObat')) || [];
 let idSedangEdit = null;
 
+
 const formObat = document.getElementById('medicineForm');
 const tombolSimpan = document.getElementById('submitBtn');
 const tombolBatal = document.getElementById('cancelBtn');
@@ -9,24 +10,30 @@ const barisKosong = document.getElementById('emptyRow');
 const kotakCari = document.getElementById('searchInput');
 const tombolHapusSemua = document.getElementById('clearAllBtn');
 
+
 const totalObatEl = document.getElementById('totalObat');
 const totalStokEl = document.getElementById('totalStok');
 const obatHampirExpEl = document.getElementById('obatHampirExp');
+
 
 const modalKonfirmasi = document.getElementById('confirmModal');
 const pesanModal = document.getElementById('modalMessage');
 const tombolYa = document.getElementById('confirmYes');
 const tombolTidak = document.getElementById('confirmNo');
 
+
 document.getElementById('kadaluarsa').valueAsDate = new Date();
+
 
 document.addEventListener('DOMContentLoaded', () => {
     tampilkanDaftarObat();
     perbaruiStatistik();
     
+
     const hariIni = new Date().toISOString().split('T')[0];
     document.getElementById('kadaluarsa').setAttribute('min', hariIni);
 });
+
 
 formObat.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -42,9 +49,11 @@ formObat.addEventListener('submit', (e) => {
     };
     
     if (idSedangEdit) {
+
         const index = dataObat.findIndex(obat => obat.id === idSedangEdit);
         dataObat[index] = obatBaru;
     } else {
+
         dataObat.push(obatBaru);
     }
     
@@ -53,15 +62,19 @@ formObat.addEventListener('submit', (e) => {
     perbaruiStatistik();
     resetForm();
     
+
     tampilkanPesan(
         idSedangEdit ? 'Data obat berhasil diupdate!' : 'Obat baru berhasil ditambahkan!',
         'berhasil'
     );
 });
 
+
 tombolBatal.addEventListener('click', resetForm);
 
+
 kotakCari.addEventListener('input', tampilkanDaftarObat);
+
 
 tombolHapusSemua.addEventListener('click', () => {
     if (dataObat.length === 0) return;
@@ -78,6 +91,7 @@ tombolHapusSemua.addEventListener('click', () => {
     );
 });
 
+
 tombolYa.addEventListener('click', () => {
     if (typeof window.aksiTertunda === 'function') {
         window.aksiTertunda();
@@ -89,13 +103,16 @@ tombolTidak.addEventListener('click', () => {
     modalKonfirmasi.style.display = 'none';
 });
 
+
 function simpanKeLocalStorage() {
     localStorage.setItem('dataObat', JSON.stringify(dataObat));
 }
 
+
 function tampilkanDaftarObat() {
     const kataKunci = kotakCari.value.toLowerCase();
     
+
     const dataTersaring = dataObat.filter(obat => 
         obat.nama.toLowerCase().includes(kataKunci) ||
         obat.kategori.toLowerCase().includes(kataKunci) ||
@@ -115,6 +132,7 @@ function tampilkanDaftarObat() {
     dataTersaring.forEach(obat => {
         const baris = document.createElement('tr');
         
+
         const tglKadaluarsa = new Date(obat.kadaluarsa);
         const hariIni = new Date();
         const selisihWaktu = tglKadaluarsa - hariIni;
@@ -154,6 +172,7 @@ function tampilkanDaftarObat() {
     });
 }
 
+
 function perbaruiStatistik() {
     totalObatEl.textContent = dataObat.length;
     
@@ -171,12 +190,14 @@ function perbaruiStatistik() {
     obatHampirExpEl.textContent = obatHampirExp;
 }
 
+
 function editObat(id) {
     const obat = dataObat.find(o => o.id === id);
     if (!obat) return;
     
     idSedangEdit = id;
     
+
     document.getElementById('nama').value = obat.nama;
     document.getElementById('kategori').value = obat.kategori;
     document.getElementById('stok').value = obat.stok;
@@ -184,11 +205,14 @@ function editObat(id) {
     document.getElementById('kadaluarsa').value = obat.kadaluarsa;
     document.getElementById('deskripsi').value = obat.deskripsi;
     
+
     tombolSimpan.innerHTML = '<i class="fas fa-sync-alt"></i> Update Data';
     tombolBatal.style.display = 'inline-flex';
     
+
     document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
 }
+
 
 function hapusObat(id) {
     tampilkanModalKonfirmasi(
@@ -203,6 +227,7 @@ function hapusObat(id) {
     );
 }
 
+
 function resetForm() {
     formObat.reset();
     idSedangEdit = null;
@@ -211,16 +236,20 @@ function resetForm() {
     document.getElementById('kadaluarsa').valueAsDate = new Date();
 }
 
+
 function tampilkanModalKonfirmasi(pesan, fungsi) {
     pesanModal.textContent = pesan;
     window.aksiTertunda = fungsi;
     modalKonfirmasi.style.display = 'flex';
 }
 
+
 function tampilkanPesan(pesan, jenis) {
+
     const notifLama = document.querySelector('.notifikasi');
     if (notifLama) notifLama.remove();
     
+
     const notif = document.createElement('div');
     notif.className = `notifikasi ${jenis}`;
     notif.innerHTML = `
@@ -228,6 +257,7 @@ function tampilkanPesan(pesan, jenis) {
         <span>${pesan}</span>
     `;
     
+
     notif.style.cssText = `
         position: fixed;
         top: 20px;
@@ -246,11 +276,13 @@ function tampilkanPesan(pesan, jenis) {
     
     document.body.appendChild(notif);
     
+
     setTimeout(() => {
         notif.style.animation = 'slideKeluar 0.3s ease';
         setTimeout(() => notif.remove(), 300);
     }, 3000);
 }
+
 
 const gaya = document.createElement('style');
 gaya.textContent = `
@@ -289,6 +321,7 @@ gaya.textContent = `
     }
 `;
 document.head.appendChild(gaya);
+
 
 function formatTanggal(tanggalString) {
     const tanggal = new Date(tanggalString);
