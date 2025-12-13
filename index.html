@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Penyimpanan Data Obat</title>
+
     <link rel="stylesheet" href="style.css">
+ 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -14,6 +16,7 @@
         </header>
 
         <div class="main-content">
+
             <section class="form-section">
                 <h2><i class="fas fa-plus-circle"></i> Masukkan/Ubah Data Obat</h2>
                 <form id="medicineForm">
@@ -31,42 +34,103 @@
                                 <option value="Antibiotik">Antibiotik</option>
                                 <option value="Vitamin">Vitamin & Suplemen</option>
                                 <option value="Antihistamin">Antihistamin (untuk alergi)</option>
+                                <option value="Antasida">Antasida (penyakit lambung)</option>
+                                <option value="Lainnya">Lain-lain</option>
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="stok"><i class="fas fa-boxes"></i> Jumlah Stok</label>
+                            <input type="number" id="stok" min="0" placeholder="0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="harga"><i class="fas fa-money-bill-wave"></i> Harga (Rupiah)</label>
+                            <input type="number" id="harga" min="0" placeholder="10000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="kadaluarsa"><i class="fas fa-calendar-times"></i> Tanggal Kedaluwarsa</label>
+                            <input type="date" id="kadaluarsa" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="deskripsi"><i class="fas fa-file-alt"></i> Penjelasan/Penggunaan</label>
+                        <textarea id="deskripsi" rows="3" placeholder="Contoh: Digunakan untuk menurunkan panas dan meredakan sakit kepala"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="submit" class="btn btn-save" id="submitBtn">
+                            <i class="fas fa-save"></i> Simpan Data
+                        </button>
+                        <button type="button" class="btn btn-cancel" id="cancelBtn" style="display: none;">
+                            <i class="fas fa-times"></i> Batalkan
+                        </button>
                     </div>
                 </form>
             </section>
 
-            <div class="table-container">
-                <table id="medicineTable">
-                    <thead>
-                        <tr>
-                            <th>Nama Obat</th>
-                            <th>Kategori</th>
-                            <th>Stok</th>
-                            <th>Harga</th>
-                            <th>Kedaluwarsa</th>
-                            <th>Pengaturan</th>
-                        </tr>
-                    </thead>
-                    <tbody id="medicineList">
-                        <tr id="emptyRow">
-                            <td colspan="6" class="empty-message">
-                                <i class="fas fa-pills"></i>
-                                <p>Data obat masih kosong. Silakan tambahkan data obat.</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+   
+            <section class="list-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Daftar Obat Tersimpan</h2>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Cari nama obat...">
+                    </div>
+                </div>
 
-            <div class="actions">
-                <button class="btn btn-clear" id="clearAllBtn">
-                    <i class="fas fa-trash-alt"></i> Kosongkan Semua
-                </button>
-            </div>
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalObat">0</span>
+                        <span class="stat-label">Jumlah Obat</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="totalStok">0</span>
+                        <span class="stat-label">Total Stok</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number" id="obatHampirExp">0</span>
+                        <span class="stat-label">Mendekati Kedaluwarsa</span>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table id="medicineTable">
+                        <thead>
+                            <tr>
+                                <th>Nama Obat</th>
+                                <th>Kategori</th>
+                                <th>Stok</th>
+                                <th>Harga</th>
+                                <th>Kedaluwarsa</th>
+                                <th>Pengaturan</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medicineList">
+     
+                            <tr id="emptyRow">
+                                <td colspan="6" class="empty-message">
+                                    <i class="fas fa-pills"></i>
+                                    <p>Data obat masih kosong. Silakan tambahkan data obat.</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="actions">
+                    <button class="btn btn-clear" id="clearAllBtn">
+                        <i class="fas fa-trash-alt"></i> Kosongkan Semua
+                    </button>
+                </div>
+            </section>
         </div>
     </div>
+
 
     <div id="confirmModal" class="modal">
         <div class="modal-content">
